@@ -52,3 +52,15 @@ function playRound( computerChoice , userChoice) {
 }
 
 
+function game() {
+
+    for (let x=0; x<5; x++) {
+        console.log("Game: " + x)
+        const computer = computerPlay()
+        const user = prompt("Pick rock/paper/scissors")   
+
+        let result = playRound(computer, user)
+        console.log(result)
+    }
+}
+
