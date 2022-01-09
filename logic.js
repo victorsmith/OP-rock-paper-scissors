@@ -18,8 +18,11 @@ function computerPlay() {
 }
 
 
-function playRound( computerChoice , userChoice) {
-    
+function playRound(computerChoice , userChoice) {
+
+    const cScore = document.querySelector('.compScore')
+    const uScore = document.querySelector('.userScore')
+    const newResult = document.querySelector('#new-result')
 
     c = computerChoice.toLowerCase()
     // console.log("comp choice: "+ c)
@@ -28,39 +31,77 @@ function playRound( computerChoice , userChoice) {
     
     // User win cases
     if (c == 'rock' && u == 'paper') {
-        return "You win"
+        newResult.innerText = 'User Wins'
+        userScore += 1;
+        console.log("You win")
     }
     else if (c == 'paper' && u == 'scissor') {
-        return "You win"
+        newResult.innerText = 'User Wins'
+        userScore += 1;
+        console.log("You win")
     }
     else if (c == 'scissor' && u == 'rock') {
-        return "You win"
+        newResult.innerText = 'User Wins'
+        userScore += 1;
+        // console.log("You win")
     }
     // Computer Win Cases
     else if (u == 'rock' && c == 'paper') {
-        return "You lose"
+        newResult.innerText = 'Computer Wins'
+        computerScore += 1;
+        console.log("You lose")
     }
     else if (u == 'paper' && c == 'scissor') {
-        return "You lose"
+        newResult.innerText = 'Computer Wins'
+        computerScore += 1;
+        console.log("You lose")
     }
     else if (u == 'scissor' && c == 'rock') {
-        return "You lose"
+        newResult.innerText = 'Computer Wins'
+        computerScore += 1;
+        // console.log("You lose")
     }
     else {
-        return "Tie"
+        newResult.innerText = 'Tie'
+        // console.log("Tie")
     }
+
+    // Update text
+    cScore.innerText = computerScore;
+    uScore.innerText = userScore;
 }
 
 
-function game() {
-
-    for (let x=0; x<5; x++) {
-        console.log("Game: " + x)
-        const computer = computerPlay()
-        const user = prompt("Pick rock/paper/scissors")   
-
-        let result = playRound(computer, user)
-        console.log(result)
-    }
+function game(userInput) {
+    const computer = computerPlay();
+    console.log(userInput)
+    let result = playRound(computer, userInput);
 }
+
+// make non global
+let computerScore = 0;
+let userScore = 0;
+
+// rps-ui feature
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach((button) => {
+  button.addEventListener('click', () => {
+    console.log("beep")
+    if (button.id == 1) {
+        game('rock');
+    }
+    else if (button.id == 2) {
+        game('paper');
+    }
+    else if (button.id == 3) {
+        game('scissor');
+    }
+    else {
+        alert("Oops. Something went wrong!")
+    }
+  });
+});
+
+
 
