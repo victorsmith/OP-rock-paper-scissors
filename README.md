@@ -1,2 +1,2 @@
-# OP-rock-paper-scizors
+# OP-rock-paper-scissors
 Odin Project:  Rock,Paper, Scissors Assignment 
