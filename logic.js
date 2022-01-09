@@ -76,6 +76,20 @@ function game(userInput) {
     const computer = computerPlay();
     console.log(userInput)
     let result = playRound(computer, userInput);
+
+    const newResult = document.querySelector('#new-result')
+    
+    if (computerScore == 5) {
+        computerScore = 0;
+        userScore = 0
+        newResult.innerText = "Computer Wins the tournament!"
+    } 
+    else if (userScore == 5) {
+        computerScore = 0;
+        userScore = 0
+        newResult.innerText = "User Wins the tournament!"
+    }
+
 }
 
 // make non global
